@@ -1,10 +1,11 @@
 import React from "react";
 import Layout from "../Core/Layout";
+import SearchBar from "../Core/SearchBar";
 
 const Home = () => {
     return(
         <Layout>
-            <h4>k xa</h4>
+           <SearchBar />
         </Layout>
     )
 };
