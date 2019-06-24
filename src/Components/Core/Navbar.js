@@ -1,7 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom"
+import React, {useContext} from "react";
+import { Link } from "react-router-dom";
+import {MainContext} from "../../MainContext";
 
 const Navbar = () => {
+
+    const [showSearchBar, setShowSearchBar] = useContext(MainContext);
+
+    const handleClick = () => {
+        setShowSearchBar(!showSearchBar);
+    }
+
     return (
         <div style={styles.mainDiv}>
             <li style={styles.listWrapper}>
@@ -9,7 +17,7 @@ const Navbar = () => {
                     <Link style={styles.link} to="/">Recipe Finder</Link>
                     </ul>
                 <ul>
-                    <i onClick={()=>console.log("k xa")} style={styles.searchIcon} className="fa fa-search" aria-hidden="true"></i>
+                    <i onClick={handleClick} style={styles.searchIcon} className="fa fa-search" aria-hidden="true"></i>
                 </ul>
             </li>
         </div>

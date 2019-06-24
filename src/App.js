@@ -2,12 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import { BrowserRouter } from "react-router-dom";
 import MainRouter from "./Route/MainRouter"
+import { MainProvider } from "./MainContext"
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <MainRouter />
-        </BrowserRouter>
+        <MainProvider>
+            <BrowserRouter>
+                <MainRouter />
+            </BrowserRouter>
+        </MainProvider >
     );
 }
 
