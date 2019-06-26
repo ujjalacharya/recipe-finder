@@ -23,7 +23,7 @@ const SearchBar = ({ setRecipe }) => {
 
   const fetchRecipe = async veg => {
     const result = await axios.get(
-      `https://api.edamam.com/search?q=${veg}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`
+      `https://api.edamam.com/search?q=${veg}&app_id=${APP_ID}&app_key=${APP_KEY}&from=0&to=12&calories=591-722&health=alcohol-free`
     );
     setRecipe(result.data.hits);
     setLoading(false);

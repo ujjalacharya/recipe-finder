@@ -21,10 +21,10 @@ const Home = () => {
       </animated.div>
       <div className="row">
         {recipe.length > 0 &&
-          recipe.map(rec => {
+          recipe.map((rec, i) => {
             return (
-              <div className="col-md-4">
-                <Card recipe={rec.recipe} />
+              <div className="col-md-4 col-sm-6">
+                <Card key={i} recipe={rec.recipe} />
               </div>
             );
           })}
