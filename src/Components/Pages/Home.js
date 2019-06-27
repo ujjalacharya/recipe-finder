@@ -16,23 +16,22 @@ const Home = () => {
     marginTop: showSearchBar ? 0 : -15
   });
 
-  const [keyword, setKeyword] = useState("water")
+  const [keyword, setKeyword] = useState("water");
 
   const [fetchNumber, setFetchNumber] = useState({
     from: 0,
     to: 9
   });
 
-  const [loadMore, setLoadMore] = useState(false)
+  const [loadMore, setLoadMore] = useState(1);
 
   const handleLoadMore = () => {
     setFetchNumber({ from: fetchNumber.from + 9, to: fetchNumber.to + 9 });
-    setLoadMore(!loadMore)
+    setLoadMore(loadMore+1);
   };
 
   return (
     <Layout>
-      {console.log(fetchNumber)}
       <animated.div style={contentProps}>
         <SearchBar
           recipeDetails={[recipe, setRecipe]}
@@ -44,7 +43,7 @@ const Home = () => {
       </animated.div>
       <div className="row">
         <div className="container">
-          <Keyword keyword={keyword}/>
+          <Keyword keyword={keyword} />
         </div>
       </div>
       <div className="row">
@@ -56,7 +55,9 @@ const Home = () => {
               </div>
             );
           })}
-        {recipe.length > 0 && (
+      </div>
+      <div className="row">
+        {recipe.length > 0 && loadMore && (
           <div className="col-md-4">
             <button className="btn btn-primary mb-2" onClick={handleLoadMore}>
               Load More...

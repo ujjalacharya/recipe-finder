@@ -41,6 +41,9 @@ const SearchBar = ({
         fetchNumber.from
       }&to=${fetchNumber.to}&calories=591-722&health=alcohol-free`
     );
+    if(result.data.more === false){
+      setLoadMore(false)
+    }
     if (keyword === veg) {
       setRecipe([...recipe, ...result.data.hits]);
       setLoading(false);
