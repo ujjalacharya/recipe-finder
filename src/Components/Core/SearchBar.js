@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 const APP_ID = "5ae5db4c";
 const APP_KEY = "b13d73947a5ec19f0c8e7c92f54e7bc0";
 
-const SearchBar = ({ setRecipe }) => {
+const SearchBar = ({ setRecipe, showSearchBar }) => {
   const [veg, setVeg] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const inputRef = useRef();
 
   const handleChange = e => {
     const {
@@ -29,6 +31,10 @@ const SearchBar = ({ setRecipe }) => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    showSearchBar && inputRef.current.focus();
+  }, [showSearchBar])
+
   return (
     <form className="mt-2" onSubmit={handleSubmit}>
       <div className="form-row">
@@ -37,6 +43,7 @@ const SearchBar = ({ setRecipe }) => {
             type="text"
             placeholder="Name your vegetable here..."
             className="form-control"
+            ref={inputRef}
             onChange={handleChange}
           />
         </div>

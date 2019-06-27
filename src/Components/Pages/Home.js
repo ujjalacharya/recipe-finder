@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <Layout>
       <animated.div style={contentProps}>
-        <SearchBar setRecipe={setRecipe} />
+        <SearchBar setRecipe={setRecipe} showSearchBar={showSearchBar}/>
       </animated.div>
       <div className="row">
         {recipe.length > 0 &&
