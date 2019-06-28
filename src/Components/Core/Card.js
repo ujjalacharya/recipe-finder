@@ -7,7 +7,6 @@ const Card = React.memo(({ recipe }) => {
         <div className="card-header">
           <p className="card-text text-center">{recipe.label}</p>
         </div>
-        {console.log(recipe)}
         <img className="card-img-top" src={recipe.image} alt="Recipe" />
         <div className="card-body">
           <ul>

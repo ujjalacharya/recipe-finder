@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Layout from "../Core/Layout";
 import SearchBar from "../Core/SearchBar";
 import Card from "../Core/Card";
@@ -30,8 +30,24 @@ const Home = () => {
     setLoadMore(loadMore+1);
   };
 
+  useEffect(()=>{
+      window.addEventListener("scroll", handleScrollListener)
+    return(()=>{
+      window.removeEventListener("scroll", handleScrollListener)
+    })
+  }, [loadMore])
+
+  const handleScrollListener = () => {
+      console.log(window.scrollY > (1640*loadMore))
+
+      if(window.scrollY > (1220*loadMore)){
+          handleLoadMore();
+      }
+  }
+
   return (
     <Layout>
+    {console.log(window.scrollY)}
       <animated.div style={contentProps}>
         <SearchBar
           recipeDetails={[recipe, setRecipe]}
@@ -50,8 +66,8 @@ const Home = () => {
         {recipe.length > 0 &&
           recipe.map((rec, i) => {
             return (
-              <div className="col-md-4 col-sm-6">
-                <Card key={i} recipe={rec.recipe} />
+              <div key={i} className="col-md-4 col-sm-6">
+                <Card recipe={rec.recipe} />
               </div>
             );
           })}
